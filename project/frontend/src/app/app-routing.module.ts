@@ -1,13 +1,12 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./components/home/home.component";
-import {SearchstreetsComponent} from "./components/searchstreets/searchstreets.component";
-import {NavComponent} from "./components/nav/nav.component";
+import {SearchStreetComponent} from "./components/search-street/search-street.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'searchStrees', component: SearchstreetsComponent},
-  {path: 'nav', component: NavComponent},
+  {path: 'streets', component: SearchStreetComponent},
+  {path: '**', redirectTo: 'home', pathMatch: 'full'}
 
 ];
 
@@ -15,7 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
-
-
+export class AppRoutingModule { }

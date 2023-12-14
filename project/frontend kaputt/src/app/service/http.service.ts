@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 import {StreetModel} from "../models/street.model";
 
 @Injectable({
@@ -28,4 +28,6 @@ export class HttpService {
     return this.http.post<StreetModel[]>("https://overpass-api.de/api/interpreter", "data=" + encodeURIComponent(queryString));
 
   }
+
+
 }
