@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {StreetModel} from "./models/street.model";
+import {HttpService} from "./service/http.service";
 
 @Component({
   selector: 'app-root',
@@ -8,30 +9,25 @@ import {StreetModel} from "./models/street.model";
 })
 export class AppComponent {
   searchString?: string;
-  result?: StreetModel ;
+  result?: StreetModel;
 
-  async test() {
-    this.result = await fetch(
-      "https://overpass-api.de/api/interpreter",
-      {
-        method: "POST",
-        body: "data=" + encodeURIComponent(`[out:json][timeout:2500];
-            area[name="${this.searchString}"]->.searchArea;
-            (
-              way["highway"]["name"](area.searchArea);
-            );
-            for (t["name"])
-            {
-              make street name=_.val;
-              out;
-            }`)
-      },
-    ).then(
-      (data) => data.json()
-    );
 
-    //console.log(JSON.stringify(result, null, 2));
-    console.table(this.result)//console.log(result)
-    //this.result = result
+  constructor(private http: HttpService) {
   }
+
+
+  test() {
+
+
+    this.http.getStreetsPerName(this.searchString!).subscribe({
+      next: data => {
+        console.log(data)
+      },
+      error: err => {
+        console.log("erros")
+      }
+
+    })
+  }
+
 }
