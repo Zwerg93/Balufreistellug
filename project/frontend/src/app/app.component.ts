@@ -8,7 +8,7 @@ import {StreetModel} from "./models/street.model";
 })
 export class AppComponent {
   searchString?: string;
-  result: StreetModel = [];
+  result?: StreetModel ;
 
   async test() {
     this.result = await fetch(
