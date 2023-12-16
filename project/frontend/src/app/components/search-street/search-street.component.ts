@@ -15,11 +15,12 @@ export class SearchStreetComponent implements OnInit {
   result: StreetModel[] = [];
 
 
-
   constructor(private http: HttpService) {
   }
 
   ngOnInit(): void {
+
+    
   }
 
   getStreetsPerName() {
